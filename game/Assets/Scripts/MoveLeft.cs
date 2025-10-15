@@ -8,9 +8,9 @@ public class MoveLeft : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    private float speed = 30;
     void Update()
     {
-        
+        transform.Translate(Vector3.left * Time.deltaTime * speed);
     }
 }
