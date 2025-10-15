@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
-        Physics.gravity *= gravityModifer;
+        Physics.gravity *= gravityModifier;
         
     }
     public bool isOnGround = true;
