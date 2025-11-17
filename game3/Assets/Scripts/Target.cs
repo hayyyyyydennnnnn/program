@@ -32,8 +32,13 @@ public class Target : MonoBehaviour
         return new Vector3(Random.Range(-xRange, xRange), ySpawnPos);
     }
 
-    void Update()
+    private void OnMouseDown()
     {
-        
+        Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(gameObject);
     }
 }
