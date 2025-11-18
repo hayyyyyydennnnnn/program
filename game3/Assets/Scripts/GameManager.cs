@@ -9,13 +9,20 @@ public class GameManager : MonoBehaviour
     public List<GameObject> targets;
     private int score;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI gameOverText;
     void Start()
     {
         StartCoroutine(SpawnTarget());
         score = 0;
         UpdateScore(0);
+        
     }
 
+    public void GameOver()
+    {
+        gameOverText.gameObject.SetActive(true);
+    }
+    
     public void UpdateScore(int scoreToAdd)
     {
         score += scoreToAdd;
