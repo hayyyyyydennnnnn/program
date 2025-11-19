@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,8 +11,11 @@ public class GameManager : MonoBehaviour
     private int score;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
+    public bool isGameActive;
     void Start()
     {
+        isGameActive = true;
+
         StartCoroutine(SpawnTarget());
         score = 0;
         UpdateScore(0);
@@ -21,8 +25,14 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         gameOverText.gameObject.SetActive(true);
+
+        isGameActive = false;
     }
-    
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
     public void UpdateScore(int scoreToAdd)
     {
         score += scoreToAdd;
@@ -30,7 +40,7 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator SpawnTarget()
     {
-        while (true)
+        while (isGameActive)
         {
             yield return new WaitForSeconds(spawnRate);
             int index = Random.Range(0, targets.Count);
