@@ -16,11 +16,7 @@ public class GameManager : MonoBehaviour
     public Button restartButton;
     void Start()
     {
-        isGameActive = true;
-
-        StartCoroutine(SpawnTarget());
-        score = 0;
-        UpdateScore(0);
+       
         
     }
 
@@ -51,6 +47,15 @@ public class GameManager : MonoBehaviour
 
         }
 
+    }
+
+    public void StartGame()
+    {
+        isGameActive = true;
+
+        StartCoroutine(SpawnTarget());
+        score = 0;
+        UpdateScore(0);
     }
 
     
